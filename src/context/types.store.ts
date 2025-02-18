@@ -20,7 +20,7 @@ export type User = {
 };
 
 export type UserActions = {
-  type: number;
+  type: string;
   payload: UserInfo & Token;
 };
 

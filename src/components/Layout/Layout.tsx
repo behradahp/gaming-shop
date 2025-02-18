@@ -5,7 +5,7 @@ import { Outlet, useLocation } from "react-router-dom";
 // Components
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
-import { MobileDownMenu } from "./mobileDownMenu";
+import { MobileDownMenu } from "./MobileDownMenu/mobileDownMenu";
 import { MobileHeader } from "./MobileHeader/MobileHeader";
 
 export const Layout: React.FC = (): JSX.Element => {

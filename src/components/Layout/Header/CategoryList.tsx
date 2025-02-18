@@ -12,7 +12,7 @@ import { APIURL } from "../../../constants/api.Urls";
 const bannedCategories = ["New Category", "category_B", "string"];
 
 export const CategoryList: React.FC = (): JSX.Element => {
-  const { data, isLoading, isError } = useAxios<Category[]>(
+  const { data, isLoading, isError } = useAxios<Category[], null>(
     APIURL.GetCategories,
     { method: "GET" }
   );

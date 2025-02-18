@@ -1,9 +1,10 @@
 import { User, UserActions } from "../types.store";
 
 export enum UserActionTypes {
-  Login,
-  Logout,
+  Login = "login",
+  Logout = "logout",
 }
+
 export const userReducer = (user: User, action: UserActions) => {
   switch (action.type) {
     case UserActionTypes.Login: {
@@ -29,6 +30,7 @@ export const userReducer = (user: User, action: UserActions) => {
         token: null,
         isAuthenticated: false,
       };
+
     default:
       return user;
   }

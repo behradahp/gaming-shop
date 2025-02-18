@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { AxiosInstance } from "../config/axios.instance";
 import { AxiosRequestConfig } from "axios";
 
-export const useAxios = <TData>(
+export const useAxios = <TDataResponse, TDataRequest>(
   url: string,
-  config: AxiosRequestConfig<any>
+  config: AxiosRequestConfig<TDataRequest>
 ) => {
-  const [data, setData] = useState<TData>([] as TData);
+  const [data, setData] = useState<TDataResponse>([] as TDataResponse);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
 

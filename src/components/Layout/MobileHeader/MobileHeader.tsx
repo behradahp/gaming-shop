@@ -3,11 +3,11 @@ import { JSX } from "react";
 
 // Matrial
 import { AppBar, Button, Stack, Typography } from "@mui/material";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 // Component
 import { Search } from "./Search";
+import { MobileMenu } from "./Menu";
 
 // Icons
 import mainIcon from "../../../assets/icons/main-icon.svg";
@@ -26,21 +26,7 @@ export const MobileHeader: React.FC = (): JSX.Element => {
         alignItems='center'
         mb='20px'
       >
-        <Button
-          variant='outlined'
-          sx={{
-            borderColor: "#EAEBF0",
-            borderRadius: "10px",
-            minWidth: "48px",
-            padding: 0,
-            height: "48px",
-          }}
-        >
-          <MenuOutlinedIcon
-            sx={{ color: "secondary.dark" }}
-            fontSize='medium'
-          />
-        </Button>
+        <MobileMenu />
         <img src={mainIcon} alt='main-icon' width={115} height={64} />
         <Stack spacing='5px' alignItems='end'>
           <Typography

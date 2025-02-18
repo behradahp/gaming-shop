@@ -21,7 +21,8 @@ export const Footer: React.FC = (): JSX.Element => {
         width='100%'
         sx={{
           height: {
-            xs: 1200,
+            xs: 1270,
+            md: 1200,
             lg: 653,
           },
         }}
