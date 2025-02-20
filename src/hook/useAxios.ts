@@ -18,7 +18,9 @@ export const useAxios = <TDataResponse, TDataRequest>(
       .finally(() => setIsLoading(false));
   };
 
-  useEffect(() => fetchData, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return { data, isLoading, isError };
 };

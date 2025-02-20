@@ -5,3 +5,12 @@ export type Category = {
   creationAt: string;
   updatedAt: string;
 };
+
+export type Product = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: Omit<Category, "creationAt" | "updatedAt">;
+  images: string[];
+};

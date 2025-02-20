@@ -1,3 +1,5 @@
+import { Product } from "../@types/api.types";
+
 export type UserInfo = {
   id: string;
   email: string;
@@ -24,6 +26,27 @@ export type UserActions = {
   payload: UserInfo & Token;
 };
 
+export type Basket = {
+  product_id: number;
+  product: Product;
+  count: number;
+};
+
+export type BasketActions = {
+  type: string;
+  payload?: Product;
+};
+
+export type MobileView = {
+  is: boolean;
+};
+
+export type MobileViewActions = {
+  type: string;
+};
+
 export type Store = {
   user: User;
+  basket: Basket[];
+  mobileView: MobileView;
 };

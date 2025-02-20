@@ -3,12 +3,17 @@ import { JSX } from "react";
 import { NavLink } from "react-router-dom";
 
 // Material
-import { Stack, Typography } from "@mui/material";
+import { Badge, Stack, Typography } from "@mui/material";
 import LocalGroceryStoreOutlinedIcon from "@mui/icons-material/LocalGroceryStoreOutlined";
+
+// Context
+import { useStore } from "../../../context/store";
 
 export const BasketLink: React.FC<{ pathname: string }> = ({
   pathname,
 }): JSX.Element => {
+  const { store } = useStore();
+
   return (
     <Stack
       width={130}
@@ -20,11 +25,25 @@ export const BasketLink: React.FC<{ pathname: string }> = ({
       to='/cart'
       sx={{ textDecoration: "none" }}
     >
-      <LocalGroceryStoreOutlinedIcon
-        sx={{
-          color: pathname === "/cart" ? "primary.main" : "secondary.dark",
-        }}
-      />
+      {store.basket.length ? (
+        <Badge
+          color='primary'
+          badgeContent={store.basket.length.toLocaleString("fa")}
+        >
+          <LocalGroceryStoreOutlinedIcon
+            sx={{
+              color: pathname === "/cart" ? "primary.main" : "secondary.dark",
+            }}
+          />
+        </Badge>
+      ) : (
+        <LocalGroceryStoreOutlinedIcon
+          sx={{
+            color: pathname === "/cart" ? "primary.main" : "secondary.dark",
+          }}
+        />
+      )}
+
       <Typography
         sx={{
           color: pathname === "/cart" ? "primary.main" : "secondary.dark",

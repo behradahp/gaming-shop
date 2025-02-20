@@ -17,7 +17,9 @@
     "axios": "^1.7.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^7.1.5",
+    "react-slick": "^0.30.3",
     "react-toastify": "^11.0.3",
     "stylis": "^4.3.6",
     "stylis-plugin-rtl": "^2.1.1"
@@ -26,6 +28,7 @@
     "@eslint/js": "^9.19.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "@types/react-slick": "^0.23.13",
     "@types/stylis": "^4.2.7",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^9.19.0",

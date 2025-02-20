@@ -2,22 +2,36 @@
 import { JSX } from "react";
 
 // Material
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
+
+// Components
+import { HomeSlider } from "../../components/HomePage/Slider/Slider";
+import { HomeCategories } from "../../components/HomePage/Categories/HomeCategories";
+import { MostSaledProducts } from "../../components/HomePage/MostSaledPeoducts/MostSaledProducts";
 
 export const HomePage: React.FC = (): JSX.Element => {
   return (
-    <Stack
-      width='100%'
-      height='100vh'
-      alignItems='center'
-      justifyContent='center'
-      spacing={3}
-    >
-      <Typography variant='h4' fontWeight={600}>
-        اینجا صفحه اصلی است
-      </Typography>
+    <>
+      {/* Slider */}
+      <HomeSlider />
 
-      <Stack direction='row' spacing={3}></Stack>
-    </Stack>
+      {/* MainContent */}
+      <Stack
+        sx={{
+          padding: {
+            xs: "0 0 0 30px",
+            lg: "0 70px",
+          },
+          marginBottom: {
+            xs: "168px",
+            lg: "220px",
+          },
+        }}
+      >
+        <HomeCategories />
+
+        <MostSaledProducts />
+      </Stack>
+    </>
   );
 };

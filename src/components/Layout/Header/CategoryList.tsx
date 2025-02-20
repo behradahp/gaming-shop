@@ -46,8 +46,8 @@ export const CategoryList: React.FC = (): JSX.Element => {
 
   return (
     <Stack direction='row' spacing='5px' mt={3} mb={1}>
-      {data?.map((category) => {
-        if (bannedCategories.includes(category.name)) return null;
+      {data?.map((category, index) => {
+        if (bannedCategories.includes(category.name) || index > 7) return null;
         return (
           <Button
             key={category.id}

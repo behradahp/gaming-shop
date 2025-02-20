@@ -5,16 +5,15 @@
 
 html {
   max-width: 100vw;
-  overflow-x: hidden;
   background-color: #f8f8f8;
 }
 
 body {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
-.aaa .Toastify__progress-bar--wrp {
+/* ------------------------------------- Toastify Customization ------------------------------------- */
+.custom-toast .Toastify__progress-bar--wrp {
   width: 90%;
   margin-left: 5%;
   bottom: 6px;
@@ -22,14 +21,44 @@ body {
   border-radius: 10px;
   direction: rtl;
 }
-.aaa .Toastify__progress-bar--bg {
+.custom-toast .Toastify__progress-bar--bg {
   background: none;
 }
-.aaa .Toastify__progress-bar {
+.custom-toast .Toastify__progress-bar {
   border-radius: 10px;
   transform-origin: right;
 }
 
+/* ------------------------------------- Slider Customization ------------------------------------- */
+ul.slick-dots {
+  width: max-content;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 42px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 5px;
+}
+
+ul.slick-dots li {
+  margin: 0;
+}
+
+.slick-dots li button {
+  padding: 12px;
+}
+
+.slick-dots li button:before {
+  font-size: 9px;
+  color: #eaebf0;
+  opacity: 1;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #79d52e;
+}
+
+/* ------------------------------------- Add Fonts ------------------------------------- */
 @font-face {
   font-family: IRANYekanX;
   font-style: normal;

@@ -12,6 +12,10 @@ const initialState: Store = {
     token: null,
     isAuthenticated: false,
   },
+  basket: localStorage.getItem("basket")
+    ? JSON.parse(localStorage.getItem("basket")!)
+    : [],
+  mobileView: { is: false },
 };
 
 export const StoreContext = createContext<StoreType>({

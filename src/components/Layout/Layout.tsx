@@ -1,5 +1,5 @@
 // React Stuff
-import { JSX, useEffect, useState } from "react";
+import { JSX, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 // Components
@@ -8,34 +8,26 @@ import { Footer } from "./Footer/Footer";
 import { MobileDownMenu } from "./MobileDownMenu/mobileDownMenu";
 import { MobileHeader } from "./MobileHeader/MobileHeader";
 
+// Context
+import { useStore } from "../../context/store";
+import { MobileViewActionTypes } from "../../context/mobileView/mobileViewReducer";
+
 export const Layout: React.FC = (): JSX.Element => {
-  const [isMobileView, setIsMobileView] = useState<boolean>(false);
+  const { store, dispatch } = useStore();
   const location = useLocation();
 
   useEffect(() => {
     if (window && window.innerWidth < 1200) {
-      setIsMobileView(true);
+      dispatch({ type: MobileViewActionTypes.Yes });
     }
-
-    const mobileViewCheck = (e: Event) => {
-      const target = e.target as Window;
-      console.log(target.innerWidth);
-
-      if (target.innerWidth < 1200) setIsMobileView(true);
-      else setIsMobileView(false);
-    };
-
-    addEventListener("resize", mobileViewCheck);
-
-    return () => removeEventListener("resize", mobileViewCheck);
   }, []);
 
   return (
     <>
-      {isMobileView ? <MobileHeader /> : <Header />}
+      {store.mobileView.is ? <MobileHeader /> : <Header />}
       <Outlet />
       {location.pathname.includes("cart") ? null : <Footer />}
-      {isMobileView ? <MobileDownMenu /> : null}
+      {store.mobileView.is ? <MobileDownMenu /> : null}
     </>
   );
 };

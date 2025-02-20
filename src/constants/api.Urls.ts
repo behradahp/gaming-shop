@@ -6,4 +6,5 @@ export const AuthURL = {
 
 export const APIURL = {
   GetCategories: "categories",
+  GetProducts: "products",
 };

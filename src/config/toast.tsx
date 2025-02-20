@@ -30,7 +30,7 @@ export const ConfigedToastContainer = () => {
 export const myToast = {
   error: (text: string) =>
     toast.error(text, {
-      className: "aaa",
+      className: "custom-toast",
       style: {
         backgroundColor: "#FFF2F4",
         border: "1px solid #A62639",
