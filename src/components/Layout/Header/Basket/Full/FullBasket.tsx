@@ -17,7 +17,8 @@ export const FullBasket: React.FC = (): JSX.Element => {
 
   const totalPrice = () => {
     const total = store.basket.reduce(
-      (acc, curr) => acc + curr.product.price * curr.count,
+      (acc, curr) =>
+        acc + curr.product.default_variant.price.selling_price * curr.count,
       0
     );
 
@@ -64,9 +65,9 @@ export const FullBasket: React.FC = (): JSX.Element => {
     >
       <Typography
         textAlign='start'
-        sx={{ fontSize: "16px", fontWeight: "600", flexGrow: "1" }}
+        sx={{ fontSize: "14px", fontWeight: "600", flexGrow: "1" }}
       >
-        {totalPrice().toLocaleString("fa")} $
+        {totalPrice().toLocaleString("fa")} تومان
       </Typography>
 
       {isModalOpen && (

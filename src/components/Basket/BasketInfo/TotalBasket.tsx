@@ -12,7 +12,31 @@ export const TotalBasket: React.FC = (): JSX.Element => {
 
   const totalPrice = () => {
     const total = store.basket.reduce(
-      (acc, curr) => acc + curr.product.price * curr.count,
+      (acc, curr) =>
+        acc + curr.product.default_variant.price.rrp_price * curr.count,
+      0
+    );
+
+    return total;
+  };
+
+  const totalDiscount = () => {
+    const total = store.basket.reduce(
+      (acc, curr) =>
+        acc +
+        (curr.product.default_variant.price.rrp_price -
+          curr.product.default_variant.price.selling_price) *
+          curr.count,
+      0
+    );
+
+    return total;
+  };
+
+  const totalPayablePrice = () => {
+    const total = store.basket.reduce(
+      (acc, curr) =>
+        acc + curr.product.default_variant.price.selling_price * curr.count,
       0
     );
 
@@ -55,7 +79,7 @@ export const TotalBasket: React.FC = (): JSX.Element => {
           <Stack direction='row' width='100%' justifyContent='space-between'>
             <Typography fontWeight='300'>قیمت محصولات:</Typography>
             <Typography fontWeight='300'>
-              {totalPrice().toLocaleString("fa")} $
+              {totalPrice().toLocaleString("fa")} تومان
             </Typography>
           </Stack>
 
@@ -64,7 +88,7 @@ export const TotalBasket: React.FC = (): JSX.Element => {
               تخفیف محصولات:
             </Typography>
             <Typography fontWeight='300' color='error'>
-              {(0).toLocaleString("fa")} $
+              {totalDiscount().toLocaleString("fa")} تومان
             </Typography>
           </Stack>
         </Stack>
@@ -74,7 +98,7 @@ export const TotalBasket: React.FC = (): JSX.Element => {
               هزینه قابل پرداخت:
             </Typography>
             <Typography variant='h6' fontWeight='600'>
-              {totalPrice().toLocaleString("fa")} $
+              {totalPayablePrice().toLocaleString("fa")} تومان
             </Typography>
           </Stack>
         </Stack>

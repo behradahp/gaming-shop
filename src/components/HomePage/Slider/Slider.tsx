@@ -1,7 +1,7 @@
 // React Stuff
 import { JSX, useEffect, useRef } from "react";
 import Slider from "react-slick";
-import { SliderSettings } from "../../../config/slider";
+import { HomeSliderSettings } from "../../../config/slider";
 
 // Material
 import { Stack } from "@mui/material";
@@ -47,7 +47,7 @@ export const HomeSlider: React.FC = (): JSX.Element => {
         prev={() => sliderRef.current?.slickPrev()}
       />
 
-      <Slider ref={sliderRef} {...SliderSettings}>
+      <Slider ref={sliderRef} {...HomeSliderSettings}>
         {images.map((image, index) => {
           return (
             <Stack

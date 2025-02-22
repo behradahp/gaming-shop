@@ -40,6 +40,16 @@ ul.slick-dots {
   padding: 0 5px;
 }
 
+.discount-slider ul.slick-dots {
+  width: max-content;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 42px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 5px;
+}
+
 ul.slick-dots li {
   margin: 0;
 }
@@ -56,6 +66,10 @@ ul.slick-dots li {
 
 .slick-dots li.slick-active button:before {
   color: #79d52e;
+}
+
+.discount-slider div.slick-track {
+  transform: translate3d(0px, 0px, 0px) !important;
 }
 
 /* ------------------------------------- Add Fonts ------------------------------------- */

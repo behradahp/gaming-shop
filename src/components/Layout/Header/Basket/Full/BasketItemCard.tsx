@@ -20,13 +20,13 @@ export const BasketItemCard: React.FC<{
     <Stack spacing='12px' mb='20px'>
       <Stack direction='row' gap='20px'>
         <img
-          src={item.product.images[0]}
+          src={item.product.images.main.url[0]}
           alt='product-image'
           width={87}
           height={87}
         />
         <Typography variant='body2' fontWeight={300} sx={{ color: "black" }}>
-          {item.product.title}
+          {item.product.title_fa}
         </Typography>
       </Stack>
       <Stack
@@ -35,8 +35,11 @@ export const BasketItemCard: React.FC<{
         alignItems='center'
         justifyContent='space-between'
       >
-        <Typography variant='h6' fontWeight={600} sx={{ color: "black" }}>
-          $ {item.product.price}
+        <Typography variant='body1' fontWeight={600} sx={{ color: "black" }}>
+          {item.product.default_variant.price.selling_price.toLocaleString(
+            "fa"
+          )}{" "}
+          تومان
         </Typography>
 
         <Stack direction='row' spacing='13px'>

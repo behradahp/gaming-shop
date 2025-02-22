@@ -15,9 +15,10 @@ import { BasketActionTypes } from "../../../../context/basket/basketReducer";
 import { Product } from "../../../../@types/api.types";
 import { ChangeBasketButtons } from "./ChangeBasketButtons";
 
-export const ProductCardLastRow: React.FC<{ product: Product }> = ({
-  product,
-}): JSX.Element => {
+export const ProductCardLastRow: React.FC<{
+  product: Product;
+  isDiscount?: boolean;
+}> = ({ product, isDiscount = false }): JSX.Element => {
   const { store, dispatch } = useStore();
 
   const findCount = () => {
@@ -47,9 +48,33 @@ export const ProductCardLastRow: React.FC<{ product: Product }> = ({
       justifyContent='space-between'
       alignItems='center'
     >
-      <Typography fontWeight='600' sx={{ color: "black" }}>
-        $ {product.price}
-      </Typography>
+      <Stack alignItems='start'>
+        {isDiscount && (
+          <Typography
+            variant='body2'
+            fontWeight='300'
+            sx={{
+              fontSize: { xs: "12px", lg: "14px" },
+              color: "#666872",
+              direction: "ltr",
+              textDecoration: "line-through",
+            }}
+          >
+            {product.default_variant.price.rrp_price.toLocaleString("fa")} تومان
+          </Typography>
+        )}
+        <Typography
+          fontWeight='600'
+          sx={{
+            fontSize: { xs: "14px", lg: "18px" },
+            color: "black",
+            direction: "ltr",
+          }}
+        >
+          {product.default_variant.price.selling_price.toLocaleString("fa")}{" "}
+          تومان
+        </Typography>
+      </Stack>
 
       {isExist() ? (
         <ChangeBasketButtons

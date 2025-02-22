@@ -27,15 +27,15 @@ export const BasketItemMobileCard: React.FC<{
     >
       <Stack direction='row' spacing='12px'>
         <img
-          src={item.product.images[0]}
+          src={item.product.images.main.url[0]}
           alt='product-image'
           width={89}
           height={89}
           style={{ borderRadius: "8px" }}
         />
         <BasketItemtitleAndDescription
-          title={item.product.title}
-          description={item.product.description}
+          title={item.product.title_fa}
+          description={""}
         />
       </Stack>
       <Stack direction='row' justifyContent='space-between' alignItems='center'>
@@ -60,7 +60,27 @@ export const BasketItemMobileCard: React.FC<{
             })
           }
         />
-        <Typography variant='h5'>{item.product.price}$</Typography>
+        <Stack justifyContent='end' alignItems='end'>
+          {item.product.default_variant.price.rrp_price !==
+            item.product.default_variant.price.selling_price && (
+            <Typography
+              variant='body1'
+              fontWeight='200'
+              sx={{ color: "#AFB1BA", textDecoration: "line-through" }}
+            >
+              {item.product.default_variant.price.rrp_price.toLocaleString(
+                "fa"
+              )}{" "}
+              تومان
+            </Typography>
+          )}
+          <Typography variant='h5'>
+            {item.product.default_variant.price.selling_price.toLocaleString(
+              "fa"
+            )}{" "}
+            تومان
+          </Typography>
+        </Stack>
       </Stack>
     </Stack>
   );

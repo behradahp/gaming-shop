@@ -35,19 +35,21 @@ export const CategoryCard: React.FC<{ category: Category; color: string }> = ({
       component={NavLink}
       to='/'
     >
-      <img
-        src={category.image}
-        alt=''
-        width={104}
-        height={104}
-        style={{ borderRadius: "20px" }}
-      />
+      <Stack>
+        <img
+          src={category.image}
+          alt=''
+          // width={104}
+          height={95}
+          style={{ borderRadius: "20px" }}
+        />
+      </Stack>
       <Typography
         variant='body2'
         fontWeight={400}
-        sx={{ transition: "all 0.7s", color: "black" }}
+        sx={{ transition: "all 0.7s", color: "black", minWidth: "max-content" }}
       >
-        {category.name}
+        {category.fa_title}
       </Typography>
     </Stack>
   );

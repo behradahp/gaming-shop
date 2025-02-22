@@ -18,7 +18,8 @@ export const FullBasketModal: React.FC<{
 }> = ({ basket, dispatch }): JSX.Element => {
   const totalPrice = () => {
     const total = basket.reduce(
-      (acc, curr) => acc + curr.product.price * curr.count,
+      (acc, curr) =>
+        acc + curr.product.default_variant.price.selling_price * curr.count,
       0
     );
 
@@ -93,7 +94,7 @@ export const FullBasketModal: React.FC<{
           to='/cart'
         >
           <Typography>هزینه قابل پرداخت: </Typography>
-          <Typography>{totalPrice().toLocaleString("fa")} $</Typography>
+          <Typography>{totalPrice().toLocaleString("fa")} تومان</Typography>
         </Button>
       </Stack>
     </Stack>

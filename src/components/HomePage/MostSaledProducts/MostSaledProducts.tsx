@@ -18,10 +18,12 @@ import { APIURL } from "../../../constants/api.Urls";
 import { Product } from "../../../@types/api.types";
 
 export const MostSaledProducts: React.FC = (): JSX.Element => {
-  const { data, isLoading } = useAxios<Product[], null>(APIURL.GetProducts, {
-    method: "GET",
-  });
-  console.log(data);
+  const { data, isLoading } = useAxios<Product[], null>(
+    APIURL.GetBestSellingProducts,
+    {
+      method: "GET",
+    }
+  );
 
   return (
     <Stack

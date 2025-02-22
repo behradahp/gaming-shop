@@ -11,9 +11,13 @@ import { ProductCardLastRow } from "./LastRow/LastRow";
 
 import { Product } from "../../../@types/api.types";
 
-export const ProductCard: React.FC<{ product: Product }> = ({
-  product,
-}): JSX.Element => {
+// Icons
+import discountPercent from "../../../assets/icons/discount-percent.svg";
+
+export const ProductCard: React.FC<{
+  product: Product;
+  isDiscount?: boolean;
+}> = ({ product, isDiscount = false }): JSX.Element => {
   return (
     <Stack
       position='relative'
@@ -45,14 +49,53 @@ export const ProductCard: React.FC<{ product: Product }> = ({
       component={NavLink}
       to='/'
     >
+      {/* Discount */}
+      {isDiscount && (
+        <Stack
+          alignItems='center'
+          justifyContent='center'
+          position='absolute'
+          left={0}
+          top='15px'
+        >
+          <img src={discountPercent} alt='' width={52} height={26} />
+          <Typography sx={{ color: "white", position: "absolute" }}>
+            {Math.round(
+              ((product.default_variant.price.rrp_price -
+                product.default_variant.price.selling_price) /
+                product.default_variant.price.rrp_price) *
+                100
+            ).toLocaleString("fa")}{" "}
+            ٪
+          </Typography>
+        </Stack>
+      )}
+
       <ProductCardFirstRow product={product} />
 
-      <Typography textAlign='right' sx={{ height: "50px", color: "black" }}>
-        {product.title.slice(0, 50)}
-        {product.title.length > 50 && "..."}
+      <Typography
+        textAlign='left'
+        sx={{
+          fontSize: { xs: "14px", lg: "17px" },
+          height: "50px",
+          color: "black",
+          direction: "ltr",
+        }}
+      >
+        {product.title_fa.slice(0, 40)}
+        {product.title_fa.length > 40 && "..."}
       </Typography>
 
-      <ProductCardLastRow product={product} />
+      {product.status === "out_of_stock" ? (
+        <Typography
+          textAlign='end'
+          sx={{ color: "#A1A3A8", height: { xs: "38px", lg: "48px" } }}
+        >
+          ناموجود
+        </Typography>
+      ) : (
+        <ProductCardLastRow product={product} isDiscount={isDiscount} />
+      )}
     </Stack>
   );
 };

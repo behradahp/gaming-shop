@@ -29,7 +29,7 @@ export const BasketItemCard: React.FC<{
     >
       <Stack direction='row' spacing='26px' maxWidth='75%'>
         <img
-          src={item.product.images[0]}
+          src={item.product.images.main.url[0]}
           alt='product-image'
           width={173}
           height={173}
@@ -38,8 +38,8 @@ export const BasketItemCard: React.FC<{
 
         <Stack justifyContent='space-between'>
           <BasketItemtitleAndDescription
-            title={item.product.title}
-            description={item.product.description}
+            title={item.product.title_fa}
+            description={""}
           />
 
           <BasketItemButtons
@@ -65,8 +65,24 @@ export const BasketItemCard: React.FC<{
           />
         </Stack>
       </Stack>
-      <Stack justifyContent='end'>
-        <Typography variant='h5'>{item.product.price}$</Typography>
+      <Stack justifyContent='end' alignItems='end'>
+        {item.product.default_variant.price.rrp_price !==
+          item.product.default_variant.price.selling_price && (
+          <Typography
+            variant='body1'
+            fontWeight='200'
+            sx={{ color: "#AFB1BA", textDecoration: "line-through" }}
+          >
+            {item.product.default_variant.price.rrp_price.toLocaleString("fa")}{" "}
+            تومان
+          </Typography>
+        )}
+        <Typography variant='h5'>
+          {item.product.default_variant.price.selling_price.toLocaleString(
+            "fa"
+          )}{" "}
+          تومان
+        </Typography>
       </Stack>
     </Stack>
   );

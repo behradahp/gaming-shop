@@ -26,9 +26,10 @@ export const ProductCardFirstRow: React.FC<{ product: Product }> = ({
           xs: "31px",
           lg: "42px",
         },
+        direction: "ltr",
       }}
     >
-      <ProductCardImage image={product.images[0]} />
+      <ProductCardImage image={product.images.main.url[0]} />
       <ProductCardLabel />
       <ProductCardCompareIcon />
     </Stack>

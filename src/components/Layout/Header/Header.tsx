@@ -1,5 +1,6 @@
 // React Stuff
 import { JSX } from "react";
+import { NavLink } from "react-router-dom";
 
 // Matrial
 import { AppBar, Stack } from "@mui/material";
@@ -8,7 +9,7 @@ import { AppBar, Stack } from "@mui/material";
 import { Search } from "./Search";
 import { UserProfile } from "./UserProfile";
 import { Basket } from "./Basket/Basket";
-import { CategoryList } from "./CategoryList";
+import { CategoryList } from "./Category/CategoryList";
 import { ThemeAndPhone } from "./ThemeAndPhone";
 
 // Icons
@@ -24,7 +25,10 @@ export const Header: React.FC = (): JSX.Element => {
       {/* First Row */}
       <Stack direction='row' justifyContent='space-between' alignItems='center'>
         <Search />
-        <img src={mainIcon} alt='main-icon' width={115} height={64} />
+        <NavLink to='/'>
+          <img src={mainIcon} alt='main-icon' width={115} height={64} />
+        </NavLink>
+
         <Stack direction='row' justifyContent='end' spacing='15px' width={512}>
           <UserProfile />
           <Basket />

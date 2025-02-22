@@ -6,19 +6,12 @@ import { Puff } from "react-loader-spinner";
 import { Stack, Typography } from "@mui/material";
 
 // Components
-import { CategorySkeleton } from "./CategorySkeleton";
 import { HomeCategoryList } from "./CategoryList";
 
-// API
-import { useAxios } from "../../../hook/useAxios";
-import { Category } from "../../../@types/api.types";
-import { APIURL } from "../../../constants/api.Urls";
+// Constants
+import { categories } from "../../../constants/categories";
 
 export const HomeCategories: React.FC = (): JSX.Element => {
-  const { data, isLoading } = useAxios<Category[], null>(APIURL.GetCategories, {
-    method: "GET",
-  });
-
   return (
     <Stack
       alignItems='center'
@@ -49,7 +42,7 @@ export const HomeCategories: React.FC = (): JSX.Element => {
         </Typography>
       </Stack>
 
-      {isLoading ? <CategorySkeleton /> : <HomeCategoryList data={data} />}
+      {<HomeCategoryList data={categories} />}
     </Stack>
   );
 };

@@ -4,8 +4,14 @@ import { JSX } from "react";
 // Material
 import { Stack } from "@mui/material";
 
-import { Product } from "../../../@types/api.types";
+// Components
 import { ProductCard } from "../../Common/ProductCard/ProductCard";
+
+// Types
+import { Product } from "../../../@types/api.types";
+
+// Functions
+import { stockCheck } from "../../../constants/functions";
 
 export const ProductList: React.FC<{ data: Product[] }> = ({
   data,
@@ -24,10 +30,10 @@ export const ProductList: React.FC<{ data: Product[] }> = ({
       }}
     >
       {data.map((product, index) => {
-        if (index > 20) return null;
+        if (index > 4) return null;
         return (
           <Stack key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard product={product} isDiscount={stockCheck(product)} />
           </Stack>
         );
       })}

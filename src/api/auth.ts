@@ -1,5 +1,5 @@
 import { AuthURL } from "../constants/api.Urls";
-import { AxiosInstance } from "../config/axios.instance";
+import axios from "axios";
 
 interface LoginData {
   email: string;
@@ -14,7 +14,7 @@ export const UserLogin = async (data: LoginData) => {
     refresh: "",
   };
 
-  await AxiosInstance(AuthURL.Login, {
+  await axios(AuthURL.Login, {
     method: "POST",
     data: data,
   })
@@ -22,7 +22,7 @@ export const UserLogin = async (data: LoginData) => {
     .then((data) => {
       tokens = { access: data.access_token, refresh: data.refresh_token };
       success = true;
-      AxiosInstance.defaults.headers.common[
+      axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${tokens.access}`;
     })
@@ -33,7 +33,7 @@ export const UserLogin = async (data: LoginData) => {
   if (success) {
     let output = null;
 
-    await AxiosInstance(AuthURL.Profile, {
+    await axios(AuthURL.Profile, {
       method: "GET",
     })
       .then((res) => res.data)
@@ -62,11 +62,9 @@ interface RegisterData {
 
 export const UserRegister = async (data: RegisterData) => {
   let success = false;
-  await AxiosInstance(AuthURL.Register, { method: "POST", data: data }).then(
-    (res) => {
-      if (res.statusText === "Created") success = true;
-    }
-  );
+  await axios(AuthURL.Register, { method: "POST", data: data }).then((res) => {
+    if (res.statusText === "Created") success = true;
+  });
 
   return success;
 };
